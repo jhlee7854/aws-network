@@ -18,7 +18,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - run: go mod download
-      - uses: pulumi/actions@v3
+      - uses: pulumi/actions@v5
         with:
           command: preview
           stack-name: dev
