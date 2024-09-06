@@ -6,6 +6,8 @@ jobs:
     name: Preview
     runs-on: ubuntu-latest
     environment: dev
+    permissions:
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
@@ -24,6 +26,5 @@ jobs:
           stack-name: dev
           cloud-url: ${{ secrets.PULUMI_CLOUD_URL }}
           comment-on-pr: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
