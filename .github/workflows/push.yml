@@ -1,9 +1,11 @@
 name: Pulumi
 on:
-  - pull_request
+  push:
+    branches:
+      - main
 jobs:
-  preview:
-    name: Preview
+  update:
+    name: Update
     runs-on: ubuntu-latest
     environment: dev
     permissions:
@@ -22,7 +24,7 @@ jobs:
       - run: go mod download
       - uses: pulumi/actions@v5
         with:
-          command: preview
+          command: up
           stack-name: dev
           cloud-url: ${{ secrets.PULUMI_CLOUD_URL }}
           comment-on-pr: true
